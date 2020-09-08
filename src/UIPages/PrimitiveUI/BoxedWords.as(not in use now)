@@ -1,0 +1,39 @@
+package src.UIPages.PrimitiveUI {
+	import flash.display.Sprite;
+	import flash.text.TextField;
+	import flash.text.TextFormat;
+	import flash.text.TextFieldAutoSize;
+	import src.UIPages.UIConstants;
+	import flash.display.DisplayObject;
+	
+	/**
+	 * ...
+	 * @author Xiler
+	 */
+	public class BoxedWords extends Sprite {
+		
+		private var textField:TextField;
+		private var textFormat:TextFormat;
+		
+		public function BoxedWords(text:String, textSize:Number = 15, extendAmount:Number = 0,
+			x:Number = UIConstants.DEFAULT_X,y:Number = UIConstants.DEFAULT_Y) {
+			
+			textFormat = new TextFormat("Arial", textSize, 0x000000, true);
+			textField = new TextField();
+			addChild(textField);
+			textField.autoSize = TextFieldAutoSize.LEFT;
+			textField.defaultTextFormat = textFormat;
+			textField.text = text;
+			textField.selectable = false;
+			textField.x = -(textField.width / 2);
+			
+			this.x = x;
+			this.y = y;
+			
+			this.graphics.lineStyle(2, 0x000000);
+			this.graphics.drawRect( -(extendAmount+(textField.width/2)), 0, (extendAmount*2)+textField.width , textField.height);
+			
+			
+		}
+	}
+}
